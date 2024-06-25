@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            border: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            background-color: #f0f0f0; 
+        }
+        .container {
+            text-align: center;
+        }
+        .container p {
+            color: blue;
+            font-size: 20px; 
+            font-weight: 600;
+        }
+        .container button {
+            height: 27px;
+            width: 53px;
+            font-size: larger;
+            margin: 10px; 
+        }
+        .img-container {
+            width: 200px; 
+            height: 200px; 
+            overflow: hidden;
+            margin: auto; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .img-container img {
+            max-width: 100%; 
+            display: block;
+            margin: auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-container">
+            <img id="myImage" src="https://www.clipartbest.com/cliparts/RTA/BMk/RTABMkoqc.png" alt="train image is loading...">
+        </div>
+        <p>Click the following buttons to handle the animation</p>
+        <button onclick="moveRight()">Start</button>
+        <button onclick="stop()">Stop</button>
+    </div>
+
+    <script>
+        var imgObj = null;
+        var animate;
+
+        function init() {
+            imgObj = document.getElementById('myImage');
+            imgObj.style.position = 'relative';
+            imgObj.style.left = '0%';
+        }
+        function moveRight() {
+            imgObj.style.left = parseInt(imgObj.style.left) + 1 + '%';
+            animate = setTimeout(moveRight, 60);
+        }
+        function stop() {
+            clearTimeout(animate);
+            imgObj.style.left = '0%';
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
